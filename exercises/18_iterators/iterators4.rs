@@ -1,4 +1,21 @@
 fn factorial(num: u64) -> u64 {
+    let mut numbers: Vec<u64> = Vec::new();
+    let mut temp = num;
+
+    loop {
+        if temp == 0 || temp == 1 {
+            numbers.push(1);
+            break;
+        } else {
+            numbers.push(temp);
+            match temp.checked_sub(1) {
+                Some(result) => temp = result,
+                None => break,
+            }
+        }
+    }
+
+    numbers.iter().product()
     // TODO: Complete this function to return the factorial of `num` which is
     // defined as `1 * 2 * 3 * … * num`.
     // https://en.wikipedia.org/wiki/Factorial
